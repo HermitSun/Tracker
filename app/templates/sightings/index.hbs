@@ -3,6 +3,9 @@
         {{#each model as |sighting|}}
             <li class="list-group-item">
                 {{sighting.location}} - {{sighting.sightedAt}}
+                {{#if sighting.isNew}}
+                    - NEW
+                {{/if}}
             </li>
         {{/each}}
     </ul>

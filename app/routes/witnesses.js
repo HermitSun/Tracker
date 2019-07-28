@@ -5,7 +5,7 @@ export default Route.extend({
     const witnessRecord = this.store.createRecord('witness', {
       fName: 'Todd',
       lName: 'Gandee',
-      email: 'fake@bignerdranch.com'
+      email: 'tgandee@bignerdranch.com'
     });
     return [witnessRecord];
   }
