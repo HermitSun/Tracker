@@ -15,6 +15,8 @@ module.exports = {
     browser: true
   },
   rules: {
+    'no-console': 'off', //关闭“不能使用控制台”
+    'ember/new-module-imports': 'off' //关闭“强制采用ES6+模块语法”
   },
   overrides: [
     // node files
