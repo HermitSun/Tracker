@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'tracker',
     environment,
@@ -21,6 +21,30 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+  };
+
+  ENV.contentSecurityPolicy = {
+    // Deny everything by default
+    'default-src': "'none'",
+
+    // Allow scripts at
+    'script-src': ["'self'"],
+
+    // Allow fonts to be loaded from
+    'font-src': ["'self'"],
+
+    // Allow data (xhr/websocket) from
+    'connect-src': ["'self'", 'https://bnr-tracker-api.herokuapp.com'],
+
+    // Allow images from the origin itself (i.e. current domain)
+    'img-src': "'self'",
+
+    // Allow CSS loaded from
+    'style-src': ["'self'"],
+
+    // Omit `media-src` from policy
+    // Browser will fallback to default-src for media resources (which is 'none', see above)
+    'media-src': null
   };
 
   if (environment === 'development') {
