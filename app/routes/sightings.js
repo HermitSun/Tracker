@@ -14,8 +14,7 @@ export default Route.extend({
     });
     const record3 = this.store.createRecord('sighting', {
       location: 'Asilomar',
-      sightedAt: new Date('2016-03-21'),
-      isNew: true
+      sightedAt: new Date('2016-03-21')
     });
     return [record1, record2, record3];
   }
