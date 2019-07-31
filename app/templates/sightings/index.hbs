@@ -15,6 +15,10 @@
                     {{else}}
                         <h3 class="text-danger">Bogus Sighting</h3>
                     {{/if}}
+                    <p>created at: {{moment-from sighting.createdAt}}</p>
+                    {{#each sighting.witnesses as |witness|}}
+                        <p>{{witness.fullName}}</p>
+                    {{/each}}
                 </div>
                 {{#link-to 'sighting.edit' sighting.id
                            tagName="button"

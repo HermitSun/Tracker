@@ -16,7 +16,8 @@ module.exports = {
   },
   rules: {
     'no-console': 'off', //关闭“不能使用控制台”
-    'ember/new-module-imports': 'off' //关闭“强制采用ES6+模块语法”
+    'ember/new-module-imports': 'off', //关闭“强制采用ES6+模块语法”
+    'ember/avoid-leaking-state-in-ember-objects': 'off' //关闭“不能使用数组等对象作为控制器属性”
   },
   overrides: [
     // node files

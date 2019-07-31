@@ -3,6 +3,7 @@ import {alias} from '@ember/object/computed';
 
 export default Controller.extend({
   sighting: alias('model.sighting'),
+  sightingDate: new Date().toISOString(),
   actions: {
     update() {
       if (this.get('sighting').get('hasDirtyAttributes')) {
@@ -28,6 +29,13 @@ export default Controller.extend({
             this.transitionToRoute('sightings');
           })
       }
+    },
+    formatDate(id) {
+      this.store.findRecord('sighting', id)
+        .then((sight) => {
+          sight.set('sightedAt', new Date(window.moment(this.sightingDate).format()));
+          // 这里一定要确保是Date类型……不然会出奇怪的问题
+        });
     }
   }
 });

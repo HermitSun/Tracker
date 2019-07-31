@@ -30,6 +30,15 @@
                 name="location"
                 required=true}}
     </div>
+    <div class="form-group">
+        <label>Date</label>
+        <!--通过Input组件来实现双向绑定（来自官网）-->
+        <!--如果用date类型的输入框，下拉行为会被action覆盖-->
+        <Input @value={{this.sightingDate}}
+               class="form-control"
+               required
+            {{action 'formatDate' model.sighting.id}}/>
+    </div>
     <button type="submit"
             class="btn btn-primary btn-block">Update
     </button>
