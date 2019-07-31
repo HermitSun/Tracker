@@ -1,18 +1,10 @@
 <div class="row">
     {{#each model as |cryptid|}}
         <div class="col-xs-12 col-sm-3 text-center">
-            <div class="media well">
-                {{#link-to 'cryptid' cryptid.id title=cryptid.name}}
-                    <img class="media-object thumbnail"
-                         src="{{get-thumbnail cryptid.profileImg}}"
-                         alt="{{cryptid.name}}"
-                         width="100%"
-                         height="100%">
-                {{/link-to}}
-                <div class="caption">
-                    <h3>{{cryptid.name}}</h3>
-                </div>
-            </div>
+            {{#link-to 'cryptid' cryptid.id title=cryptid.name}}
+                {{listing-item imagePath=cryptid.profileImg
+                               name=cryptid.name}}
+            {{/link-to}}
         </div>
     {{else}}
         <div class="jumbotron">

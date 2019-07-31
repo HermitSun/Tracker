@@ -11,8 +11,12 @@ export default Controller.extend({
       if (store.get('hasDirtyAttributes')) {
         store.save()
           .then(() => {
+            this.send('flash', {
+              alertType: 'success',
+              message: 'New sighting.'
+            });
             this.transitionToRoute('sightings');
-            this.set('witnessList', []); // 清空缓存
+            this.set('witnessList', []); // clear cache
           });
       }
     },
