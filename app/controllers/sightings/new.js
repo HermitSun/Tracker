@@ -12,7 +12,7 @@ export default Controller.extend({
         store.save()
           .then(() => {
             this.transitionToRoute('sightings');
-            this.witnessList = [];
+            this.set('witnessList', []); // 清空缓存
           });
       }
     },
