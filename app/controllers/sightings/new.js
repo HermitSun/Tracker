@@ -4,6 +4,7 @@ import {alias} from '@ember/object/computed';
 export default Controller.extend({
   sighting: alias('model.sighting'),
   witnessList: [],
+  alertCount: 0,
   actions: {
     create() {
       const store = this.get('sighting');
@@ -11,10 +12,14 @@ export default Controller.extend({
       if (store.get('hasDirtyAttributes')) {
         store.save()
           .then(() => {
+            const count = this.get('alertCount');
             this.send('flash', {
-              alertType: 'success',
-              message: 'New sighting.'
+              index: count,
+              type: 'success',
+              message: 'Sighted ' + window.moment(store.get('sightedAt')).fromNow() +
+                ', at ' + store.get('location')
             });
+            this.set('alertCount', count + 1);
             this.transitionToRoute('sightings');
             this.set('witnessList', []); // clear cache
           });
@@ -28,7 +33,6 @@ export default Controller.extend({
       this.get('sighting').set('cryptid', value);
     },
     addWitness(value) {
-      console.log('add');
       this.set('witnessList', value);
     },
     removeWitness(index) {

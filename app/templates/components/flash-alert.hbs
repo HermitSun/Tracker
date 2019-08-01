@@ -1,2 +1,7 @@
-<strong>{{typeTitle}}!</strong>
-{{message}}
+{{#each alerts as |alert|}}
+    <div class="alert {{alert.alertType}}"
+        {{action 'removeAlert' alert}}>
+        <strong>{{alert.title}}!</strong>
+        {{alert.message}}
+    </div>
+{{/each}}
